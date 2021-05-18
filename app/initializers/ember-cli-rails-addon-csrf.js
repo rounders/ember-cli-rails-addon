@@ -1,12 +1,12 @@
-import Ember from 'ember';
+import jQuery from 'jquery';
 
 export default {
   name: 'ember-cli-rails-addon-csrf',
 
   initialize() {
-    if(Ember.$ && Ember.$.ajaxPrefilter) {
-      Ember.$.ajaxPrefilter((options, originalOptions, xhr) => {
-        const token = Ember.$('meta[name="csrf-token"]').attr('content');
+    if(jQuery && jQuery.ajaxPrefilter) {
+      jQuery.ajaxPrefilter((options, originalOptions, xhr) => {
+        const token = jQuery('meta[name="csrf-token"]').attr('content');
         xhr.setRequestHeader('X-CSRF-Token', token);
       });
     }
